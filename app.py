@@ -70,7 +70,7 @@ if "report" in st.session_state and st.session_state.get("report"):
     col1, col2 = st.columns(2)
 
     with col1:
-        st.markdown("### 📝 Text Agent — Groq / LLaMA 3")
+        st.markdown("### 📝 Text Agent")
         ta = report.get("text_analysis", {})
         if "error" not in ta:
             sentiment_color = {"positive": "🟢", "negative": "🔴", "neutral": "🟡"}
@@ -85,7 +85,7 @@ if "report" in st.session_state and st.session_state.get("report"):
             st.error(f"Text Agent error: {ta['error']}")
 
     with col2:
-        st.markdown("### 🖼️ Image Agent — Gemini 1.5 Flash")
+        st.markdown("### 🖼️ Image Agent")
         ia = report.get("image_analysis", {})
         if "error" not in ia:
             st.metric("Scene", ia.get("scene", "N/A").capitalize())
@@ -101,7 +101,7 @@ if "report" in st.session_state and st.session_state.get("report"):
             st.error(f"Image Agent error: {ia['error']}")
 
     st.divider()
-    st.markdown("### 🔗 Cross-Modal Insight")
+    st.markdown("### Cross-Modal Insight")
     st.success(report.get("cross_modal_insight", "N/A"))
 
     with st.expander("🧾 Raw JSON report"):
