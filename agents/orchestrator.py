@@ -5,10 +5,6 @@ from concurrent.futures import ThreadPoolExecutor
 
 
 class Orchestrator:
-    """
-    Orchestrator — routes tasks to the correct agent,
-    runs them in parallel, and merges the results.
-    """
 
     def __init__(self):
         self.text_agent = TextAgent()
@@ -27,7 +23,7 @@ class Orchestrator:
         return self.image_agent.analyze(image_b64)
 
     def _cross_modal_insight(self, text_result: dict, image_result: dict) -> str:
-        """Generate a simple cross-modal insight from both agent results."""
+       
         if "error" in text_result or "error" in image_result:
             return "Could not generate insight due to an agent error."
 
@@ -48,7 +44,7 @@ class Orchestrator:
         )
 
     def run(self, article: dict) -> dict:
-        """Run both agents in parallel and return the merged report."""
+       
         with ThreadPoolExecutor(max_workers=2) as executor:
             future_text = executor.submit(self._run_text, article)
             future_image = executor.submit(self._run_image, article)

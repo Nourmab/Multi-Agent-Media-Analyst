@@ -7,11 +7,7 @@ import os
 
 
 class ImageAgent:
-    """
-    Image Agent — powered by Gemini 1.5 Flash.
-    Performs: captioning, object detection, OCR, scene classification.
-    """
-
+   
     def __init__(self):
         self.llm = ChatGoogleGenerativeAI(
             model="gemini-2.5-flash",
@@ -21,7 +17,7 @@ class ImageAgent:
         self.parser = StrOutputParser()
 
     def analyze(self, image_base64: str) -> dict:
-        """Run the image analysis chain and return structured results."""
+       
         try:
             message = HumanMessage(
                 content=[

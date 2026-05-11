@@ -5,7 +5,7 @@ from io import BytesIO
 
 
 def load_image_as_base64(image_url: str) -> str | None:
-    """Download an image from a URL and encode it to base64."""
+    
     try:
         response = requests.get(image_url, timeout=10)
         response.raise_for_status()
@@ -20,7 +20,7 @@ def load_image_as_base64(image_url: str) -> str | None:
 
 
 def fetch_news(api_key: str, query: str, language: str = "en") -> list[dict]:
-    """Fetch news articles from NewsAPI matching a query."""
+    
     from newsapi import NewsApiClient
     client = NewsApiClient(api_key=api_key)
     response = client.get_everything(

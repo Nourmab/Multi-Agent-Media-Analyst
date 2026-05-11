@@ -6,10 +6,6 @@ import os
 
 
 class TextAgent:
-    """
-    Text Agent — powered by Groq (LLaMA 3).
-    Performs: summarization, sentiment analysis, keyword extraction.
-    """
 
     def __init__(self):
         self.llm = ChatGroq(
@@ -43,10 +39,10 @@ class TextAgent:
         self.chain = prompt | self.llm | self.parser
 
     def analyze(self, title: str, content: str) -> dict:
-        """Run the text analysis chain and return structured results."""
+    
         try:
             raw = self.chain.invoke({"title": title, "content": content})
-            # Clean possible markdown fences just in case
+            
             clean = raw.strip().removeprefix("```json").removesuffix("```").strip()
             return json.loads(clean)
         except json.JSONDecodeError as e:
